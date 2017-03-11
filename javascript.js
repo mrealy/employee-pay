@@ -49,7 +49,7 @@ $('#submit-data').on('click', function(event) {
 
 	console.log(nameInput + '' + roleInput + '' + startInput + '' + rateInput);
 
-	$('tbody').append('<tr>').append('<td>' + nameInput + '</td>').append('<td>' + roleInput + '</td>').append('<td>' + startInput + '</td>').append('<td>' + 'placeholder' + '</td>').append('<td>' + rateInput + '</td>').append('<td>' + 'placeholder' + '</td>');
+	$('tbody').append('<tr><td>' + nameInput + '</td>'+'<td>' + roleInput + '</td>'+'<td>' + startInput + '</td>'+'<td>' + "placeholder" + '</td>'+'<td>' + rateInput + '</td>'+'<td>' + "placeholder" + '</td></tr>');
 
 	clearInputs();
 });
