@@ -49,7 +49,17 @@ $('#submit-data').on('click', function(event) {
 
 	console.log(nameInput + '' + roleInput + '' + startInput + '' + rateInput);
 
-	$('tbody').append('<tr><td>' + nameInput + '</td>'+'<td>' + roleInput + '</td>'+'<td>' + startInput + '</td>'+'<td>' + "placeholder" + '</td>'+'<td>' + rateInput + '</td>'+'<td>' + "placeholder" + '</td></tr>');
+// adding some moments magic
+	// var randomDate = "03/11/2016";
+    var convertedDate = moment(new Date(startInput));
+
+    var months = moment(convertedDate).diff(moment(), "months");
+
+    var monthsWorked = Math.abs(months);
+
+    var totalBilled = monthsWorked * rateInput;
+
+	$('tbody').append('<tr><td>' + nameInput + '</td>'+'<td>' + roleInput + '</td>'+'<td>' + startInput + '</td>'+'<td>' + monthsWorked + '</td>'+'<td>' + rateInput + '</td>'+'<td>' + totalBilled + '</td></tr>');
 
 	clearInputs();
 });
