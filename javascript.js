@@ -1,3 +1,8 @@
+var nameInput = '';
+var roleInput = '';
+var startInput = '';
+var rateInput = '';
+
 // Initialize Firebase
  var config = {
    apiKey: "AIzaSyCkPLKf5tE4yQcJolyNU04uiJfNX6cyDG8",
@@ -11,30 +16,47 @@ firebase.initializeApp(config);
 
 var database = firebase.database();
 
-var name = "joe";
-var role = "prez";
+// var name = "joe";
+// var role = "prez";
 
 
 
-$("body").on("click", function(){
-	// Save the new price in Firebase
-    database.ref().set({
-      name: name,
-      role: role
-    });
-});
+// $("body").on("click", function(){
+// 	// Save the new price in Firebase
+//     database.ref().push({
+//       name: nameInput,
+//       role: roleInput,
+//       start: startInput,
+//       rate: rateInput
+//     });
+// });
 
 $('#submit-data').on('click', function(event) {
 	event.preventDefault();
 	console.log('submit button has been clicked');
-	var nameInput = $('#name').val().trim();
-	var roleInput = $('#role').val().trim();
-	var startInput = $('#start-date').val().trim();
-	var rateInput = $('#monthly-rate').val().trim();
+	nameInput = $('#name').val().trim();
+	roleInput = $('#role').val().trim();
+	startInput = $('#start-date').val().trim();
+	rateInput = $('#monthly-rate').val().trim();
+
+	// Save the new price in Firebase
+    database.ref().push({
+      name: nameInput,
+      role: roleInput,
+      start: startInput,
+      rate: rateInput
+    });
 
 	console.log(nameInput + '' + roleInput + '' + startInput + '' + rateInput);
 
 	$('tbody').append('<tr>').append('<td>' + nameInput + '</td>').append('<td>' + roleInput + '</td>').append('<td>' + startInput + '</td>').append('<td>' + 'placeholder' + '</td>').append('<td>' + rateInput + '</td>').append('<td>' + 'placeholder' + '</td>');
 
+	clearInputs();
 });
 
+function clearInputs() {
+	$('#name').val('');
+	$('#role').val('');
+	$('#start-date').val('');
+	$('#monthly-rate').val('');
+}
